@@ -1,0 +1,45 @@
+{% extends 'shop/layout.html' %}
+
+{% block title %}All product{% endblock %}
+{% block link %}
+{% endblock %}
+
+{% block content %}
+{% for product in products %}
+    <div class="card">
+      <h1>{{ product.name }}</h1>
+      <p class="price">Price: {% if product.currency == 'USD'%}${% else %}€{% endif %}{{ product.price }}</p>
+      <p>{{ product.description }}</p>
+      <p>
+          <a href="{% url 'landing' id=product.id type='product' %}"><button class="btn btn-primary">Buy Item</button></a>
+          <button data-item-id="{{ product.id }}" id="adder-{{ product.id }}" class="btn btn-warning">Add to order</button>
+      </p>
+    </div>
+{% endfor %}
+
+{% csrf_token %}
+<script>
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    const buttons = document.querySelectorAll("[id^=adder-]");
+
+    const url = '{{ request.scheme }}' + '://' + '{{ request.get_host }}' + "/core/shop/add_to_order/";
+
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            event.preventDefault();
+            const itemId = button.dataset.itemId;
+            const data = fetch(
+                url + `${itemId}` + '/',
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        'X-CSRFToken': csrftoken
+                        },
+                }
+            );
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends  'shop/layout.html' %}
+
+{% block title %}Your order{% endblock %}
+
+{% block content %}
+<section>
+    <h1 class="text-center">That is an {{ request.user }}'s order:</h1>
+
+    <ul>
+    {% for product in order.products.all %}
+        <h3><li>Name: {{ product.name }} | price: {% if product.currency == 'USD'%}${% else %}€{% endif %}{{ product.price }}</li></h3>
+    {% endfor %}
+    </ul>
+<div class="card">
+    {% if order %}
+        <a href="{% url 'landing' id=order.id type='order' %}">
+    <button class="btn btn-secondary">
+        Pay for order
+    </button>
+    </a>
+    {% endif %}
+</div>
+</section>
+{% endblock %}
+
