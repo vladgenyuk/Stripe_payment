@@ -10,7 +10,7 @@ COPY requirements.txt .
 
 ENV DB_HOST=dpg-cm9fipn109ks73cjajk0-a
 ENV DB_PORT=5432
-ENV DB_NAME=vlad
+ENV DB_NAME=vlad_9g43
 ENV DB_USER=vlad
 ENV DB_PASS=Fveamc0HjomZGodM9WdH3nI63fHycClX
 ENV PIP_ROOT_USER_ACTION=ignore
