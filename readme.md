@@ -17,4 +17,11 @@
   docker-compose up -d
 ```
 
+# Run Locally without docker-compose (SQLite)
+
+
+```bash
+  python manage.py runserver --settings=config.settings.dev
+```
+
 https://stripe-django-oy9j.onrender.com/core/shop/products/
