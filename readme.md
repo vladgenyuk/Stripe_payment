@@ -21,6 +21,10 @@
 
 
 ```bash
+  python manage.py migrate --settings=config.settings.dev
+```
+
+```bash
   python manage.py runserver --settings=config.settings.dev
 ```
 
