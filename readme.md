@@ -1,3 +1,20 @@
-1) stripe_secret in views
-2) run: python manage.py runserver --settings=config.settings.dev
-3)  
+
+# Tech Stack
+
+**Backend:** DRF
+
+**Frontend:** Jinja2, Pure JS
+
+**Server:** Gunicorn
+
+**Services:** Docker, PostgreSQL
+
+
+# Run Locally with docker-compose
+
+
+```bash
+  docker-compose up -d
+```
+
+https://stripe-django-oy9j.onrender.com/core/shop/products/
